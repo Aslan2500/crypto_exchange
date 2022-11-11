@@ -34,4 +34,12 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "credential_id")
     private UserCredential userCredential;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "fiat-wallet_id")
+    private FiatWallet fiatWallet;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "crypto-wallet_id")
+    private CryptoWallet cryptoWallet;
 }
