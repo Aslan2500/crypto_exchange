@@ -1,12 +1,13 @@
 package com.example.crypto_exchange.dto;
 
+import com.example.crypto_exchange.entity.enums.Role;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 
 @Data
-public class RegisterDTO {
+public class RegisterUserDTO {
 
     @Pattern(regexp = "^[A-Za-z]+$",message = "Name may not be empty")
     private String name;
@@ -19,4 +20,6 @@ public class RegisterDTO {
 
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{3,}$")
     private String password;
+
+    private Role role;
 }
