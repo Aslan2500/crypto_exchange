@@ -16,7 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Table(name = "user")
+@Table(name = "users")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,10 +36,10 @@ public class User {
     private UserCredential userCredential;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "fiat-wallet_id")
+    @JoinColumn(name = "fiat_wallet_id")
     private FiatWallet fiatWallet;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "crypto-wallet_id")
+    @JoinColumn(name = "crypto_wallet_id")
     private CryptoWallet cryptoWallet;
 }

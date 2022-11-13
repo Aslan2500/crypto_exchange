@@ -12,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "crypto-wallet")
+@Table(name = "crypto_wallet")
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
