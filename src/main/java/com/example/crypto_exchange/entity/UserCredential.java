@@ -37,7 +37,7 @@ public class UserCredential {
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "verified")
-    private Boolean isVerified;
+    private Boolean emailIsVerified;
     @Column(name = "security_question")
     private String securityQuestion;
     @Column(name = "security_answer")

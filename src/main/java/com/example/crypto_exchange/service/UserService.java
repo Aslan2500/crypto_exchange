@@ -5,6 +5,8 @@ import com.example.crypto_exchange.entity.UserCredential;
 
 public interface UserService {
 
+    void registerUser(User user);
+
     void deleteUserById(Long id);
 
     User findById(Long id);

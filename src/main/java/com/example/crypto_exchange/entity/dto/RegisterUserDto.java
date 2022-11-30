@@ -1,4 +1,4 @@
-package com.example.crypto_exchange.dto;
+package com.example.crypto_exchange.entity.dto;
 
 import com.example.crypto_exchange.entity.enums.Role;
 import com.example.crypto_exchange.util.PhoneUtil;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data
-public class RegisterUserDTO {
+public class RegisterUserDto {
 
     @Pattern(regexp = "^[A-Za-z]+$",message = "Name may not be empty")
     @NotNull(message = "This field can't be empty")

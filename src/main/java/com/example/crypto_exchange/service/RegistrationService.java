@@ -1,8 +1,8 @@
 package com.example.crypto_exchange.service;
 
-import com.example.crypto_exchange.dto.RegisterUserDTO;
+import com.example.crypto_exchange.entity.dto.RegisterUserDto;
 
 public interface RegistrationService {
 
-    void registerUser(RegisterUserDTO dto);
+    void registerUser(RegisterUserDto dto);
 }

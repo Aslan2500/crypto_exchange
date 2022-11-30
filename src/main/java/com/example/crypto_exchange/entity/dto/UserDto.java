@@ -1,4 +1,4 @@
-package com.example.crypto_exchange.dto;
+package com.example.crypto_exchange.entity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class UserDto {
 
     @NotNull
     private Long id;

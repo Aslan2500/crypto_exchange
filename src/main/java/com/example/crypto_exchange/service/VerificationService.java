@@ -1,8 +1,11 @@
 package com.example.crypto_exchange.service;
 
+import com.example.crypto_exchange.entity.Verification;
+import com.example.crypto_exchange.entity.dto.request.VerifyUserRequestDto;
+
 public interface VerificationService {
 
-    void sendVerificationSmsCode(String phoneNumber);
+    Verification sendVerificationSmsCode(String phoneNumber);
 
-    void verifyRegistrationBySms(String phoneNumber, String code);
+    Boolean verifyRegistrationBySms(VerifyUserRequestDto dto);
 }

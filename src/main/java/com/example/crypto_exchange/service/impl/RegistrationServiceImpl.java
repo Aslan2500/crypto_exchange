@@ -1,22 +1,23 @@
 package com.example.crypto_exchange.service.impl;
 
-import com.example.crypto_exchange.dto.RegisterUserDTO;
+import com.example.crypto_exchange.entity.dto.RegisterUserDto;
 import com.example.crypto_exchange.entity.User;
 import com.example.crypto_exchange.entity.UserCredential;
-import com.example.crypto_exchange.repository.UserRepository;
 import com.example.crypto_exchange.service.RegistrationService;
+import com.example.crypto_exchange.service.UserService;
 import com.example.crypto_exchange.util.PhoneUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+//TODO: Добавить Mapper
 @Service
 @RequiredArgsConstructor
 public class RegistrationServiceImpl implements RegistrationService {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Override
-    public void registerUser(RegisterUserDTO dto) {
+    public void registerUser(RegisterUserDto dto) {
         String convertedPhoneNumber = PhoneUtil.convertToStandardFormat(dto.getPhoneNumber());
         User user = User.builder()
                 .name(dto.getName())
@@ -29,10 +30,10 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .phoneNumber(convertedPhoneNumber)
                 .securityQuestion(dto.getSecurityQuestion())
                 .securityAnswer(dto.getSecurityAnswer())
-                .isVerified(false)
+                .emailIsVerified(false)
                 .role(dto.getRole())
                 .build();
         user.setUserCredential(userCredential);
-        userRepository.save(user);
+        userService.registerUser(user);
     }
 }

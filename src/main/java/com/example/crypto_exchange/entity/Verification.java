@@ -1,4 +1,4 @@
-package com.example.crypto_exchange.dto;
+package com.example.crypto_exchange.entity;
 
 import com.example.crypto_exchange.entity.enums.VerificationType;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class Verification {
     private String receiver;
 
     @Column(name = "verification_code")
-    private String code;
+    private String verificationCode;
 
     @Column(name = "code_expiration", nullable = true)
     private Timestamp codeExpiration;

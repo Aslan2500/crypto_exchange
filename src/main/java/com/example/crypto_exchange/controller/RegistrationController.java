@@ -1,6 +1,6 @@
 package com.example.crypto_exchange.controller;
 
-import com.example.crypto_exchange.dto.RegisterUserDTO;
+import com.example.crypto_exchange.entity.dto.RegisterUserDto;
 import com.example.crypto_exchange.service.RegistrationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -26,7 +26,7 @@ public class RegistrationController {
     @ApiResponse(responseCode = "400", description = "Incorrect data transmitted")
     @ApiResponse(responseCode = "403", description = "Your role doesn't have access")
     @PostMapping
-    public ResponseEntity<Void> registerUser(@Valid @RequestBody RegisterUserDTO dto) {
+    public ResponseEntity<Void> registerUser(@Valid @RequestBody RegisterUserDto dto) {
         registrationService.registerUser(dto);
         return ResponseEntity.ok().build();
     }
