@@ -15,8 +15,6 @@ public class UserDTO {
 
     @NotNull
     private Long id;
-
     private String name;
-
     private String surname;
 }

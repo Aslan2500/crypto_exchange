@@ -32,6 +32,16 @@ public class UserCredential {
     private String email;
     @Column(name = "password")
     private String password;
+    @Column(name = "passport_number")
+    private String passport;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @Column(name = "verified")
+    private Boolean isVerified;
+    @Column(name = "security_question")
+    private String securityQuestion;
+    @Column(name = "security_answer")
+    private String securityAnswer;
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
