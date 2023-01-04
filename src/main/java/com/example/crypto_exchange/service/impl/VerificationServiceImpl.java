@@ -9,6 +9,7 @@ import com.example.crypto_exchange.service.VerificationService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -17,6 +18,7 @@ import static com.example.crypto_exchange.util.PhoneUtil.convertToStandardFormat
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class VerificationServiceImpl implements VerificationService {
 
     private static final int CODE_EXPIRATION_TIME = 5;

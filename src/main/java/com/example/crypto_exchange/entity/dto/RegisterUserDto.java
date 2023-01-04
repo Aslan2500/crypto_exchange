@@ -11,16 +11,16 @@ import javax.validation.constraints.Pattern;
 @Data
 public class RegisterUserDto {
 
-    @Pattern(regexp = "^[A-Za-z]+$",message = "Name may not be empty")
+    @Pattern(regexp = "^[A-Za-z]+$", message = "Name may not be empty")
     @NotNull(message = "This field can't be empty")
     private String name;
-    @Pattern(regexp = "^[A-Za-z]+$",message = "Surname may not be empty")
+    @Pattern(regexp = "^[A-Za-z]+$", message = "Surname may not be empty")
     @NotNull(message = "This field can't be empty")
     private String surname;
-    @Email
+    @Email(message = "email is incorrect")
     @NotNull(message = "This field can't be empty")
     private String email;
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{3,}$")
+//    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{3,}$")
     @NotNull(message = "This field can't be empty")
     private String password;
     @NotNull(message = "This field can't be empty")
