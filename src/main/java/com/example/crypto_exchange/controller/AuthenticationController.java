@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,7 +39,7 @@ public class AuthenticationController {
     @ApiResponse(responseCode = "200", description = "Login to the Application was successful")
     @ApiResponse(responseCode = "403", description = "Invalid email/password combination")
     @PostMapping("/login")
-    public ResponseEntity<?> authenticate(@RequestParam AuthenticationRequestDto dto) {
+    public ResponseEntity authenticate(@RequestBody AuthenticationRequestDto dto) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dto.getLogin(), dto.getPassword()));
             UserCredential userCredential =  userService.findUserCredentialByEmail(dto.getLogin());
