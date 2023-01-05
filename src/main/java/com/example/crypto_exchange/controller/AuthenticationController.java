@@ -2,6 +2,7 @@ package com.example.crypto_exchange.controller;
 
 import com.example.crypto_exchange.entity.UserCredential;
 import com.example.crypto_exchange.entity.dto.request.AuthenticationRequestDto;
+import com.example.crypto_exchange.entity.dto.request.PasswordRecoveryDto;
 import com.example.crypto_exchange.security.jwt.JwtTokenProvider;
 import com.example.crypto_exchange.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,7 +18,6 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +51,13 @@ public class AuthenticationController {
         } catch (UsernameNotFoundException ex) {
             return new ResponseEntity("Invalid login/password combination", HttpStatus.FORBIDDEN);
         }
+    }
+
+    @Operation(summary = "password recovery")
+    @PostMapping("/login/password-recovery")
+    public ResponseEntity<?> passwordRecovery(@RequestBody PasswordRecoveryDto dto) {
+        userService.recoverPassword(dto);
+        return ResponseEntity.ok("New password successfully set");
     }
 
     @SecurityRequirement(name = "TOKEN")
