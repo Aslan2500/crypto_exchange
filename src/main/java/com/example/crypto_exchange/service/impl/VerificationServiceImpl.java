@@ -4,6 +4,7 @@ import com.example.crypto_exchange.entity.Verification;
 import com.example.crypto_exchange.entity.dto.request.VerifyUserRequestDto;
 import com.example.crypto_exchange.entity.enums.VerificationType;
 import com.example.crypto_exchange.exception.ResourceNotFoundException;
+import com.example.crypto_exchange.repository.UserCredentialRepository;
 import com.example.crypto_exchange.repository.VerificationRepository;
 import com.example.crypto_exchange.service.VerificationService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,8 @@ public class VerificationServiceImpl implements VerificationService {
     private static final int CODE_EXPIRATION_TIME = 5;
 
     private final VerificationRepository verificationRepository;
+    private final UserCredentialRepository userCredentialRepository;
+
     @Override
     public Verification sendVerificationSmsCode(String phoneNumber) {
         String validatedPhoneNumber = convertToStandardFormat(phoneNumber);
@@ -42,6 +45,7 @@ public class VerificationServiceImpl implements VerificationService {
                 verificationRepository.findByReceiverAndVerificationCode(
                         validatedPhoneNumber, dto.getVerificationCode()
                 ).orElseThrow(() -> new ResourceNotFoundException("Verification not found for this mobile phone"));
+        userCredentialRepository.findByPhoneNumber(validatedPhoneNumber).orElseThrow().setIsVerified(true);
         return !LocalDateTime.now().isAfter((verification.getCodeExpiration()).toLocalDateTime());
     }
 }

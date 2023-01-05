@@ -32,7 +32,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .phoneNumber(convertedPhoneNumber)
                 .securityQuestion(dto.getSecurityQuestion())
                 .securityAnswer(dto.getSecurityAnswer())
-                .emailIsVerified(false)
+                .isVerified(false)
                 .role(dto.getRole())
                 .build();
         user.setUserCredential(userCredential);
