@@ -9,6 +9,7 @@ import com.example.crypto_exchange.util.PhoneUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //TODO: Добавить Mapper
 @Service
 @RequiredArgsConstructor
@@ -19,13 +20,14 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public void registerUser(RegisterUserDto dto) {
         String convertedPhoneNumber = PhoneUtil.convertToStandardFormat(dto.getPhoneNumber());
+        String passwordEncoded = new BCryptPasswordEncoder().encode(dto.getPassword());
         User user = User.builder()
                 .name(dto.getName())
                 .surname(dto.getSurname())
                 .build();
         UserCredential userCredential = UserCredential.builder()
                 .email(dto.getEmail())
-                .password(dto.getPassword())
+                .password(passwordEncoded)
                 .passport(dto.getPassport())
                 .phoneNumber(convertedPhoneNumber)
                 .securityQuestion(dto.getSecurityQuestion())

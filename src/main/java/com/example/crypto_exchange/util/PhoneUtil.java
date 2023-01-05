@@ -17,6 +17,7 @@ public class PhoneUtil {
         if(!isValidPhoneNumber(phoneNumber))
             throw new PhoneFormatException("Phone format is not correct");
         final Matcher matcher = Pattern.compile(PHONE_REGEX).matcher(phoneNumber);
+        matcher.find();
         int prefixLength = matcher.group(1).length();
         return "+7" + phoneNumber.substring(prefixLength);
     }
