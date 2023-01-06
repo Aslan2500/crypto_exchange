@@ -65,6 +65,7 @@ public class AuthenticationController {
     @ApiResponse(responseCode = "200", description = "Exiting the application was successful")
     @PostMapping("/logout")
     public void logout(HttpServletRequest request, HttpServletResponse response) {
-        new SecurityContextLogoutHandler().logout(request, response, null);
+        SecurityContextLogoutHandler securityContextLogoutHandler = new SecurityContextLogoutHandler();
+        securityContextLogoutHandler.logout(request, response, null);
     }
 }

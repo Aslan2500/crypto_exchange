@@ -1,5 +1,7 @@
 package com.example.crypto_exchange.service.impl;
 
+import com.example.crypto_exchange.entity.CryptoWallet;
+import com.example.crypto_exchange.entity.FiatWallet;
 import com.example.crypto_exchange.entity.dto.RegisterUserDto;
 import com.example.crypto_exchange.entity.User;
 import com.example.crypto_exchange.entity.UserCredential;
@@ -24,6 +26,8 @@ public class RegistrationServiceImpl implements RegistrationService {
         User user = User.builder()
                 .name(dto.getName())
                 .surname(dto.getSurname())
+                .cryptoWallet(new CryptoWallet())
+                .fiatWallet(new FiatWallet())
                 .build();
         UserCredential userCredential = UserCredential.builder()
                 .email(dto.getEmail())
