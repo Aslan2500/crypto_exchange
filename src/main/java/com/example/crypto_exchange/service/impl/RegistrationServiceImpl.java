@@ -23,11 +23,22 @@ public class RegistrationServiceImpl implements RegistrationService {
     public void registerUser(RegisterUserDto dto) {
         String convertedPhoneNumber = PhoneUtil.convertToStandardFormat(dto.getPhoneNumber());
         String passwordEncoded = new BCryptPasswordEncoder().encode(dto.getPassword());
+
+        CryptoWallet cryptoWallet = new CryptoWallet();
+        cryptoWallet.setBTC(0.0);
+        cryptoWallet.setETH(0.0);
+        cryptoWallet.setSOL(0.0);
+
+        FiatWallet fiatWallet = new FiatWallet();
+        fiatWallet.setRUB(0.0);
+        fiatWallet.setUSD(0.0);
+        fiatWallet.setEUR(0.0);
+
         User user = User.builder()
                 .name(dto.getName())
                 .surname(dto.getSurname())
-                .cryptoWallet(new CryptoWallet())
-                .fiatWallet(new FiatWallet())
+                .cryptoWallet(cryptoWallet)
+                .fiatWallet(fiatWallet)
                 .build();
         UserCredential userCredential = UserCredential.builder()
                 .email(dto.getEmail())

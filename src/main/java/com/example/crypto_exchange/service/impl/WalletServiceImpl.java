@@ -18,7 +18,7 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public SendWalletInfoResponseDto getWalletInfo() {
-        User user = userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        User user = getCurrentUser();
         CryptoWallet cryptoWallet = user.getCryptoWallet();
         FiatWallet fiatWallet = user.getFiatWallet();
         SendWalletInfoResponseDto dto = new SendWalletInfoResponseDto();
@@ -31,5 +31,9 @@ public class WalletServiceImpl implements WalletService {
         dto.setUSD(fiatWallet.getUSD());
 
         return dto;
+    }
+
+    private User getCurrentUser() {
+        return userService.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
     }
 }
